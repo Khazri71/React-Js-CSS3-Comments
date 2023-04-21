@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import Comment from "./components/Comment";
+import uniqid from "uniqid";
 
 function App() {
+  let [commentsArr, setCommentsArr] = useState([
+    {
+      firstName: "Ali",
+      lastName: "Yui",
+      title: "Test 1",
+      commentText:
+        "Lorem ipsum dolor sit amet consectetur, adipisicing elit Explicabo voluptatum possimus quis dolorem, impedit magni exercitationem architecto ",
+    },
+    {
+      firstName: "Sami",
+      lastName: "Wri",
+      title: "Test 2",
+      commentText:
+        "consequatur animi eos odio iste perferendis rerum assumenda porro veritatis nesciunt. Aspernatur, officia!",
+    },
+    {
+      firstName: "Jane",
+      lastName: "Teu",
+      title: "Test 3",
+      commentText:
+        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus ad tempora optio laboriosam deleniti odio.",
+    },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p className="text">Comments</p>
+      <div className="container">
+        {commentsArr.map((com) => (
+          <Comment key={uniqid()} comment={com} />
+        ))}
+      </div>
     </div>
   );
 }
